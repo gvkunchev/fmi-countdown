@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <style>
+            #countdown {
+                font-family: Arial;
+                font-size: 120px;
+                text-align: center;
+                margin: 30px auto;
+            }
+
+            #python_logo_holder {
+                position: relative;
+                margin: 0 auto;
+                width: 200px;
+            }
+
+            
+
+            #python_logo_holder img {
+                width: 200px;
+            }
+
+            #python_logo_back {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0.3;
+            }
+            #python_logo_front {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="countdown">
+            Оставащо време
+            <br/>
+            <span id="minutes"></span>:<span id="seconds"></span>
+        </div>
+        <div id="python_logo_holder">
+            <div id="python_logo_back"><img src="logo.png"/></div>
+            <div id="python_logo_front"><img src="logo.png"/></div>
+        </div>
+        <script>
+            var starttime = 35 * 60;
+            var time = starttime;
+
+            time++;
+            function counter(){
+                time--;
+                var minutes = Math.floor(time / 60);
+                var seconds = time - minutes * 60;
+                var percent = 220 - (220 * (time / starttime));
+                document.getElementById('python_logo_front').style.height = percent + 'px';
+                document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+                if (time == 0) {
+                    return;
+                }
+                setTimeout(counter, 1000);
+            }
+            counter()
+            
+        </script>
+    </body>
+</html>
